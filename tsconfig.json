@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist",
+        "module": "commojs",
+        "target": "es2019",
+        "esModuleInterop": true,
+        "allowsJs": true
+    }
+}
