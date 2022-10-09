@@ -2,8 +2,6 @@ import { UserData } from '../../../src/entities/user-data'
 import { UserRepository } from '../../../src/usecases/register-user-on-mailing-list/ports/user-repository'
 import { RegisterUserOnMailingList } from '../../../src/usecases/register-user-on-mailing-list/register-user-on-mailing-list'
 import { InMemoryUserRepository } from '../../../src/usecases/register-user-on-mailing-list/repository/in-memory-repository'
-import { InvalidNameError } from '../../../src/entities/errors/invalid-name-error'
-import { left } from '../../../src/shared/either'
 
 describe('Register user on mailing list use case', () => {
   test('should add user with complete data to mailing list', async () => {
@@ -24,10 +22,10 @@ describe('Register user on mailing list use case', () => {
     const useCase: RegisterUserOnMailingList = new RegisterUserOnMailingList(repo)
     const name = 'any_name'
     const invalidEmail = 'invalid_email'
-    const response = await useCase.registerUserOnMaillingList({ name, email: invalidEmail })
+    const error: Error = (await useCase.registerUserOnMaillingList({ name, email: invalidEmail })).value as Error
     const user = await repo.findUserByEmail('any@email.com')
     expect(user).toBeNull()
-    expect(response).toEqual(left(new InvalidNameError()))
+    expect(error.name).toEqual('InvalidEmailError')
   })
 
   test('should add user with invalid name to mailing list', async () => {
@@ -36,9 +34,9 @@ describe('Register user on mailing list use case', () => {
     const useCase: RegisterUserOnMailingList = new RegisterUserOnMailingList(repo)
     const invalidName = ''
     const email = 'any@email.com'
-    const response = await useCase.registerUserOnMaillingList({ name: invalidName, email })
+    const error: Error = (await useCase.registerUserOnMaillingList({ name: invalidName, email })).value as Error
     const user = await repo.findUserByEmail('any@email.com')
     expect(user).toBeNull()
-    expect(response).toEqual(left(new InvalidNameError()))
+    expect(error.name).toEqual('InvalidNameError')
   })
 })
