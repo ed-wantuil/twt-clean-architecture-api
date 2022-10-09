@@ -4,7 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --passWithNoTests --silent --noStackTrace --runInband",
+    "test-verbose": "jest --passWithNoTests --runInband",
+    "test-unit": "npm test -- --watch -c jest-unit-config.js",
+    "test-integration": "npm test -- --watch -c jest-integration-config.js",
+    "test-staged": "npm test -- --findRelatedTests",
+    "test-ci": "npm test -- --converage"
   },
   "keywords": [],
   "author": "",
