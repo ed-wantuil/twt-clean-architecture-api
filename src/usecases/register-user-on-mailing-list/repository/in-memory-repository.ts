@@ -20,8 +20,8 @@ export class InMemoryUserRepository implements UserRepository {
     return await this.findUserByEmail(user.email) !== null
   }
 
-  findAllUsers (): Promise<UserData[]> {
-    return null
+  async findAllUsers (): Promise<UserData[]> {
+    return this.repository
   }
 
   async findUserByEmail (email: string): Promise<UserData> {
