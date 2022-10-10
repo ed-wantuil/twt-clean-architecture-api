@@ -1,5 +1,5 @@
-import { InvalidEmailError } from './errors/invalid-email-error'
-import { Either, left, right } from '../shared/either'
+import { InvalidEmailError } from './errors'
+import { Either, left, right } from '../shared'
 
 export class Email {
   public readonly value: string
@@ -26,7 +26,7 @@ export class Email {
     }
 
     const emailRegex =
-        /^[-!#$%&'*+/0-9=?A-Z^_a-z`{|}~](\.?[-!#$%&'*+/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-*\.?[a-zA-Z0-9])*\.[a-zA-Z](-?[a-zA-Z0-9])+$/
+            /^[-!#$%&'*+/0-9=?A-Z^_a-z`{|}~](\.?[-!#$%&'*+/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-*\.?[a-zA-Z0-9])*\.[a-zA-Z](-?[a-zA-Z0-9])+$/
 
     if (!emailRegex.test(email)) {
       return false
