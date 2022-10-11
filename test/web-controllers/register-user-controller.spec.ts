@@ -69,11 +69,11 @@ describe('Register user web controller', () => {
   })
 
   test('should return status code 400 when request is missing user name and email', async () => {
-    const requestWithMissingEmail: HttpRequest = {
+    const requestWithMissingNameAndEmail: HttpRequest = {
       body: {
       }
     }
-    const response: HttpResponse = await controller.handle(requestWithMissingEmail)
+    const response: HttpResponse = await controller.handle(requestWithMissingNameAndEmail)
     expect(response.statusCode).toEqual(400)
     expect(response.body).toBeInstanceOf(MissingParamError)
     expect((response.body as Error).message).toEqual('Missing parameter from request: name email.')
