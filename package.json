@@ -5,16 +5,17 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --passWithNoTests --silent --noStackTrace",
-    "test-verbose": "jest --passWithNoTests --runInband",
-    "test-unit": "npm test -- --watch -c jest-unit-config.js",
+    "test-ci": "npm test -- --converage",
     "test-integration": "npm test -- --watch -c jest-integration-config.js",
     "test-staged": "npm test -- --findRelatedTests",
-    "test-ci": "npm test -- --converage"
+    "test-unit": "npm test -- --watch -c jest-unit-config.js",
+    "test-verbose": "jest --passWithNoTests --runInband"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/express": "^4.17.14",
     "@types/jest": "^29.1.2",
     "@types/node": "^18.8.3",
     "@types/supertest": "^2.0.12",
@@ -33,7 +34,6 @@
     "typescript": "^4.8.4"
   },
   "dependencies": {
-    "@types/express": "^4.17.14",
     "express": "^4.18.2",
     "module-alias": "^2.2.2"
   }
