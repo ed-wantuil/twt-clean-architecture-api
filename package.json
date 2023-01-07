@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "buiuld": "rimraf dist && tsc -p tsconfig-build.json",
     "test": "jest --passWithNoTests --silent --noStackTrace",
     "test-ci": "npm test -- --converage",
     "test-integration": "npm test -- --watch -c jest-integration-config.js",
@@ -36,5 +37,8 @@
   "dependencies": {
     "express": "^4.18.2",
     "module-alias": "^2.2.2"
+  },
+  "_moduleAliases": {
+    "@": "dist"
   }
 }
