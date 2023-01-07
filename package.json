@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "buiuld": "rimraf dist && tsc -p tsconfig-build.json",
+    "build": "rimraf dist && tsc -p tsconfig-build.json",
     "test": "jest --passWithNoTests --silent --noStackTrace",
     "test-ci": "npm test -- --converage",
     "test-integration": "npm test -- --watch -c jest-integration-config.js",
